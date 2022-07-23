@@ -1,6 +1,6 @@
 import { Typography, Button } from "@mui/material";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useAppSelector } from "../../../app/hooks";
 import { categories } from "../../../utils/pages/filteredPost/categories";
 import { tags } from "../../../utils/pages/filteredPost/tags";
@@ -9,6 +9,7 @@ import "./styles.scss";
 const HomeFeatures = () => {
   const navigate = useNavigate();
   const allPosts = useAppSelector((state) => state.posts.entities);
+  const location = useLocation();
 
   const [displayCategory, setDisplayCategory] = useState<boolean>(false);
   const [displayTags, setDisplayTags] = useState<boolean>(false);
