@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="ie6 ie"><![endif]--><!--[if IE 7]><html class="ie7 ie"><![endif]--><!--[if IE 8]><html class="ie8 ie"><![endif]--><!--[if IE 9]><html class="ie9 ie"><![endif]-->
+<html lang="en" itemscope itemtype="https://schema.org/WebPage">
+<head>
+<title>What is a Default User?</title>
+<base href="https://www.computerhope.com/jargon/d/defaultu.htm" />
+<link rel="canonical" href="https://www.computerhope.com/jargon/d/defaultu.htm" />
+<link href="https://www.computerhope.com/ch.css" type="text/css" rel="stylesheet" />
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta content="Computer dictionary definition of what default user means, including related links, information, and terms." name="description" />
+<meta itemprop="name" content="What is a Default User?" />
+<meta itemprop="description" content="Computer dictionary definition of what default user means, including related links, information, and terms." />
+<meta property="og:url" content="https://www.computerhope.com/jargon/d/defaultu.htm" />
+<meta property="og:description" content="Computer dictionary definition of what default user means, including related links, information, and terms." />
+<meta property="og:title" content="What is a Default User?" />
+<meta property="og:type" content="article" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="What is a Default User?" />
+<meta name="twitter:description" content="Computer dictionary definition of what default user means, including related links, information, and terms." />
+<meta name="twitter:creator" content="@computerhope" />
+<!--[if lt IE 9]><script src="https://www.computerhope.com/cdn/html5shiv.js"></script><![endif]-->
+<meta property="og:image" content="https://www.computerhope.com/jargon/g/guest-user.jpg" />
+<meta itemprop="image" content="https://www.computerhope.com/jargon/g/guest-user.jpg" />
+<link rel="image_src" href="https://www.computerhope.com/jargon/g/guest-user.jpg" />
+<link rel="alternate" type="application/rss+xml" title="RSS-Feed" href="https://feeds.feedburner.com/LatestNewPagesOnComputerHope" />
+<link rel="apple-touch-icon" href="https://www.computerhope.com/cdn/apple-touch-icon.png" />
+<link rel="shortcut icon" href="https://www.computerhope.com/cdn/favicon.ico" type="image/x-icon" />
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5F9B8P4');</script>
+<script async src='/cdn-cgi/challenge-platform/h/g/scripts/invisible.js?ts=1655308800'></script></head>
+<body>
+<div class="skip"><a href="#main-content">Skip to Main Content</a></div>
+<div class="wrapper">
+<header class="cf"><a href="/"><picture><source srcset="/cdn/computer-hope-dark.png" media="(prefers-color-scheme: dark)" class="logo"><img src="/cdn/computer-hope.jpg" width="412" height="82" alt="Computer Hope" aria-label="Computer Hope home page" class="logo"></picture></a><div itemscope itemtype="https://schema.org/SiteNavigationElement"><form action="https://www.computerhope.com/cgi-bin/search.cgi" role="search" method="post"><input class="sbar" name="q" aria-label="search" type="text" /><button type="Submit">Search</button></form><nav><ul id="nav"><li><a href="/oh.htm" title="Questions and answers, troubleshooting, and help">Help</a></li><li><a href="/tips/" title="Computer tips and tricks">Tips</a></li><li><a href="/jargon.htm" title="Computer terms, jargon, and glossary">Dictionary</a></li><li><a href="/history/" title="Computer timeline, events, and biographies">History</a></li><li><a href="/forum/" title="Computer Hope forums and community">Forums</a></li><li><a href="/contact/" title="Contact Computer Hope or other computer companies">Contact</a></li></ul></nav></div></header>
+<div class="container ad" aria-hidden="true">
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3999293766533555" data-ad-slot="7994873325" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<nav class="container" aria-label="breadcrumb"><ol class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/" itemprop="item"><span itemprop="name">Home</span></a><meta itemprop="position" content="1" /></li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/jargon.htm" itemprop="item"><span itemprop="name">Dictionary</span></a><meta itemprop="position" content="2" /></li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/jargon/jd.htm" itemprop="item"><span itemprop="name">D - Definitions</span></a><meta itemprop="position" content="3" /></li></ol></nav>
+<div class="container content" id="main-content" role="main">
+<article>
+<h1 itemprop="headline">Default user</h1>
+<div class="updated">Updated: <span itemprop="dateModified" content="2019-11-16">11/16/2019</span> by <span itemprop="author publisher creator" itemscope itemtype="https://schema.org/Organization"><span itemprop="name">Computer Hope</span></span></div>
+<img src="/jargon/g/guest-user.jpg" width="300" height="300" alt="Default user" class="floatRight">
+<p class="intro">The <b>default user</b> is a special user account in an <a href="/jargon/o/os.htm">operating system</a> containing the default profile data for new users.</p>
+<p>For example, Microsoft Windows has a default user profile. In Windows 10, this profile is located in the directory <i>C:\Users\</i>, with a name of <i>Default</i> or something similar. The contents of this default user profile are provided to every new user account on the system. When a new user profile is created, all the default settings and files are copied to the new user's profile directory.</p>
+<p>In <a href="/jargon/l/linux.htm">Linux</a>, the default user profile, also known as the <b>skeleton profile</b>, is located in the directory <i>/etc/skel/</i>. A different skeleton profile can be specified when adding a user with the <a href="/unix/adduser.htm">adduser</a> command, either interactively or by specifying the <i>--home DIR</i> option.</p>
+<p class="alsosee"><a href="/jargon/d/default.htm">Default</a>, <a href="/jargon/network.htm">Network terms</a>, <a href="/jargon/os.htm">Operating system terms</a>, <a href="/jargon/u/user.htm">User</a></p>
+</article>
+<div class="bottomad" aria-hidden="true">
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3999293766533555" data-ad-slot="6514780129" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<aside><div id="meta_wrap" class="cf"><ul class="options cf"><li class="useful-page"><span class="nolink">Was this page useful?</span><a href="/cgi-bin/feedback.cgi?yes" rel="nofollow" class="first-child">Yes</a><a href="/cgi-bin/feedback.cgi?no" rel="nofollow">No</a></li><li><ul><li class="feedback"><a href="/feedback/" rel="nofollow" title="Give us your feedback about this page">Feedback</a></li><li class="email"><a href="/contact/" rel="nofollow" title="E-mail Computer Hope">E-mail</a></li><li class="share"><a href="/share/" rel="nofollow" title="Share this page with friends and social networks">Share</a></li><li class="first-child print"><a href="#" onclick="window.print();return false;" rel="nofollow" title="Print a copy of this page">Print</a></li></ul></li></ul></div></aside>
+</div>
+<footer><form action="https://www.computerhope.com/cgi-bin/search.cgi" role="search" method="post" class="cf"><input class="sbar" name="q" aria-label="search" type="text" /><button type="Submit">Search</button></form><div role="navigation" aria-label="footer"><ul class="cf"><li class="recent-pages"><ol><li class="ftitle">Recently added pages</li><li id="ra1"></li><li id="ra2"></li><li id="ra3"></li><li id="ra4"></li><li id="ra5"></li><li><a href="/whatnew.htm">View all recent updates</a></li></ol></li><li class="useful-links"><ol><li class="ftitle">Useful links</li><li><a href="/more.htm">About Computer Hope</a></li><li><a href="/sindex.htm">Site Map</a></li><li><a href="/forum/">Forum</a></li><li><a href="/contact/">Contact Us</a></li><li><a href="/issues/ch000586.htm">How to Help</a></li><li><a href="/chtop10.htm">Top 10 pages</a></li></ol></li><li class="social-networks"><ol><li class="ftitle">Follow us</li><li><a href="https://www.facebook.com/computerhope/" class="facebook">Facebook</a></li><li><a href="https://twitter.com/computerhope/" class="twitter">Twitter</a></li><li><a href="https://www.pinterest.com/computerhope/" class="pinterest">Pinterest</a></li><li><a href="https://www.youtube.com/user/Computerhope/" class="youtube">YouTube</a></li><li><a href="/rss.htm" class="rss">RSS</a></li></ol></li></ul></div><div class="copyright"><a href="/"><span class="blogo" title="Computer Hope home page" aria-hidden="true"></span><span class="sr">Computer Hope home page</span></a>&copy; 2022 Computer Hope<br><a href="/legal.htm" class="legal">Legal Disclaimer - Privacy Statement</a></div></footer>
+</div>
+<script async src="https://www.computerhope.com/ch.js"></script>
+<div id="tt" aria-hidden="true"></div>
+<script type="text/javascript">(function(){window['__CF$cv$params']={r:'71bd1a38cf2f5117',m:'FBCN.8liYKVh4XJoJEaqkwkM9xNGr9Mm8l._GofvN64-1655314948-0-AWvZ77gcz3HTx05iNQYnUjvAmzIx5nRT4s7Z1kVIm+IPzF/0hPWfnsVjum0OlAgCm1rGPmEDak8kSzpbSsumt3kmUwN88jV7Vd9akSziOzggKhKl/jZHAp0Dk6VG71qrhyNN4CpSidmtUscb8qU0d3Y=',s:[0x8d3e3bd91b,0xc5dacac272],u:'/cdn-cgi/challenge-platform/h/g'}})();</script></body>
+</html>

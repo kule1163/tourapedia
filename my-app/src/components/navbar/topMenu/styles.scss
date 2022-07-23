@@ -1,0 +1,20 @@
+@import "../../../sass/main.scss";
+
+.top-menu-container {
+  border-top: 1px solid white;
+  display: inline-flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  gap: 1rem;
+  width: 100%;
+  flex-direction: column;
+  background-color: $primaryBlue;
+  padding: 1rem $padding-inline-sm;
+  box-sizing: border-box;
+  height: 100%;
+  & * {
+    font-size: 1.2em !important;
+    color: white;
+  }
+}

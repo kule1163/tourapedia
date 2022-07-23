@@ -1,0 +1,57 @@
+@import "../../sass/main.scss";
+
+.home-container {
+  width: 100%;
+  display: flex;
+  min-height: calc(100vh - #{$navbar-height + $page-margin-top});
+  margin-top: $navbar-height + $page-margin-top;
+  flex-direction: column;
+  .section-container {
+    display: flex;
+    flex-direction: column;
+    .searchbar {
+      display: none;
+      @media (max-width: $searchbar-md) {
+        display: inline-flex;
+      }
+    }
+    .home-box {
+      position: relative;
+      box-sizing: border-box;
+      height: "100%";
+      width: 100%;
+      display: grid;
+      grid-template-columns: 3fr 1fr;
+      gap: 2rem;
+      padding-inline: $padding-inline-md;
+      @media (max-width: $home-md) {
+        display: flex;
+        flex-direction: column-reverse;
+      }
+      @media (max-width: $sm-navbar) {
+        padding-inline: $padding-inline-sm;
+      }
+      @media (max-width: $xs-navbar) {
+        padding-inline: $padding-inline-xs;
+      }
+
+      .first-section {
+        display: inline-flex;
+        flex-direction: column;
+        .posts-box {
+          height: fit-content;
+          display: grid;
+          width: 100%;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 1.5rem;
+          @media (max-width: $home-lg) {
+            grid-template-columns: repeat(2, 1fr);
+          }
+          @media (max-width: $home-sm) {
+            grid-template-columns: repeat(1, 1fr);
+          }
+        }
+      }
+    }
+  }
+}

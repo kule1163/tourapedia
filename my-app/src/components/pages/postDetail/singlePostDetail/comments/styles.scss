@@ -1,0 +1,13 @@
+.comments-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  & img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 1.5rem;
+  }
+}

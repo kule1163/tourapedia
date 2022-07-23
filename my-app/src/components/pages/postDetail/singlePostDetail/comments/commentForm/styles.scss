@@ -1,0 +1,15 @@
+.comment-form-container {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  .form-container {
+    width: 100% !important;
+    display: flex;
+    flex-direction: column;
+    .button-container {
+      display: flex;
+      margin-left: auto;
+    }
+  }
+}

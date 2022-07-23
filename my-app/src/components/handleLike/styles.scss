@@ -1,0 +1,15 @@
+@import "../../sass/main.scss";
+
+.like-container {
+  padding-inline: 0.5rem;
+  display: flex;
+  align-items: center;
+  column-gap: 0.5rem;
+  margin-left: auto;
+  * {
+    color: $primaryBlue;
+  }
+  .like-box {
+    display: flex;
+  }
+}

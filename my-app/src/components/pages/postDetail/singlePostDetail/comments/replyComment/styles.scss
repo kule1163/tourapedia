@@ -1,0 +1,24 @@
+@import "../../../../../../sass/main.scss";
+
+.reply-comment-container {
+  width: 100%;
+  /* padding-left: 60px; */
+  & img {
+    width: 35px !important;
+    height: 35px !important;
+  }
+  .children-box {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 1.5rem;
+    & > * {
+      color: $primaryBlue;
+    }
+    .icon-box {
+      margin-right: 0.5rem;
+      display: flex;
+      align-items: bottom;
+    }
+  }
+}

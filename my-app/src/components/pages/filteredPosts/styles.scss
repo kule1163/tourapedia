@@ -1,0 +1,41 @@
+@import "../../../sass/main.scss";
+
+.filtered-posts-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  min-height: calc(100vh - #{$navbar-height + $page-margin-top});
+  box-sizing: border-box;
+  justify-content: center;
+  margin-top: $navbar-height + $page-margin-top;
+  padding-inline: 1rem;
+  .filtered-posts-box {
+    display: inline-flex;
+    flex-direction: column;
+    width: 40rem;
+    @media (max-width: 40rem) {
+      width: 95%;
+      margin-inline: auto;
+    }
+    .line {
+      width: 100%;
+      margin-block: 1rem;
+      height: 1px;
+      background-color: black;
+    }
+    .header-box {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .header-text {
+        font-size: 1.8em;
+      }
+    }
+    .posts-container {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+  }
+}

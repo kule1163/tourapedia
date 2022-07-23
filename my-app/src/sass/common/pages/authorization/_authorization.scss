@@ -1,0 +1,83 @@
+.log-reg-container {
+  margin-top: $navbar-height;
+  width: 100%;
+  min-height: calc(100vh - #{$navbar-height});
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding-block: 1rem;
+  .log-reg-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 1rem;
+    width: 350px;
+    @include box-shadow($shadow);
+    .sign-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-emphasis: center;
+      font-size: 2em;
+      .profile-photo {
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+    }
+    .form {
+      width: 100%;
+      margin-block: $reg-log-margin;
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr;
+      flex-direction: column;
+      .info-box {
+        display: flex;
+        gap: 0.3rem;
+        & > * {
+          color: $primaryRed;
+        }
+      }
+      .text-area {
+        padding: 0.5rem;
+      }
+      .input-box {
+        display: flex;
+        flex-direction: column;
+        .categ-text {
+          text-transform: capitalize;
+        }
+        .error-text {
+          margin-top: 0.3rem;
+          font-size: 0.9em;
+          color: $primaryRed;
+        }
+      }
+      .half-box {
+        display: grid;
+        align-items: center;
+        justify-content: center;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        width: 100%;
+      }
+    }
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-top: 1px solid gray;
+      width: 100%;
+      .text {
+        color: $primaryBlue !important;
+        padding-block: $reg-log-margin;
+        cursor: pointer;
+      }
+    }
+  }
+}

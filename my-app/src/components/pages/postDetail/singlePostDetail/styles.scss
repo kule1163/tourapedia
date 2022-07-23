@@ -1,0 +1,74 @@
+@import "../../../../sass/main.scss";
+
+.single-post-detail-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  .single-post-detail-box {
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    overflow: hidden;
+    width: 100%;
+    & img {
+      object-fit: cover;
+      height: 40vw;
+      width: 100%;
+      @media (max-width: $sm-navbar) {
+        height: 50vw;
+      }
+      @media (max-width: $xs-navbar) {
+        height: 60vw;
+      }
+    }
+    .content-container {
+      padding-inline: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      .header-box {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        .header-icon {
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+          position: absolute;
+          left: 0;
+        }
+        .header-text {
+          font-size: 1.5em !important;
+          text-align: center !important;
+        }
+      }
+      .creator {
+        font-size: 1.1em;
+        .span {
+          font-weight: 700;
+        }
+      }
+      .tag-box {
+        display: flex;
+        .text {
+          font-size: 0.8em;
+          color: $primaryBlue;
+        }
+      }
+      .date-box {
+        display: flex;
+        align-items: center;
+        .date-text {
+          font-size: 0.8em;
+        }
+      }
+      .content-box {
+        .content {
+          flex-wrap: wrap;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,52 @@
+@import "../../../sass/main.scss";
+
+.search-container {
+  width: 30vw;
+  display: flex;
+  align-items: center;
+  border: solid white 1px;
+  border-radius: 10px;
+  display: flex;
+  padding: 0.5rem;
+  .search-icon {
+    color: white !important;
+    @media (max-width: $searchbar-md) {
+      color: $primaryBlue !important;
+    }
+  }
+  @media (max-width: $searchbar-md) {
+    margin-inline: auto;
+    margin-bottom: $page-margin-top;
+    border: $primaryBlue solid 1px;
+    width: 50vw;
+  }
+  @media (max-width: $sm-navbar) {
+    width: calc(100vw - 2 *#{$padding-inline-sm});
+  }
+  @media (max-width: $xs-navbar) {
+    width: calc(100vw - 2 *#{$padding-inline-xs});
+  }
+  .input {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 1em;
+    width: 100%;
+    height: 100%;
+    @include placeholder {
+      color: white;
+    }
+    @media (max-width: $searchbar-md) {
+      @include placeholder {
+        color: $primaryBlue;
+      }
+    }
+  }
+  .icon-box {
+    & > * {
+      color: red !important;
+      cursor: pointer;
+      z-index: 10000;
+    }
+  }
+}

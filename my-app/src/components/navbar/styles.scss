@@ -1,0 +1,77 @@
+@import "../../sass/main.scss";
+
+.navbar-container {
+  flex-grow: 0;
+  display: inline-flex;
+  flex-direction: column;
+  max-width: 100vw;
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  .navbar-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: $padding-inline-md;
+    height: $navbar-height;
+    background-color: $primaryBlue;
+    width: 100%;
+    .searchbar-md {
+      display: inline-flex;
+      @media (max-width: 900px) {
+        display: none;
+      }
+    }
+
+    @media (max-width: $sm-navbar) {
+      padding-inline: $padding-inline-sm;
+    }
+    @media (max-width: $xs-navbar) {
+      padding-inline: $padding-inline-xs;
+    }
+    * {
+      color: white;
+    }
+    .icon-box {
+      display: none;
+      color: white;
+      cursor: pointer;
+      font-weight: 600;
+      @media (max-width: $sm-navbar) {
+        display: flex;
+        gap: 1rem;
+      }
+    }
+    .logo {
+      font-size: 1.5em;
+      cursor: pointer;
+    }
+    .section-box {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      @media (max-width: $sm-navbar) {
+        display: none;
+      }
+      .text {
+        font-size: 1em;
+        cursor: pointer;
+        text-transform: capitalize;
+      }
+      .menu-items-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+      }
+      .user-info-box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+      }
+    }
+  }
+}

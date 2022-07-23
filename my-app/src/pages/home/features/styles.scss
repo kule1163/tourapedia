@@ -1,0 +1,80 @@
+@import "../../../sass/main.scss";
+
+.home-features-container {
+  display: flex;
+  flex-direction: column;
+  @media (max-width: $home-md) {
+    width: 60;
+  }
+  .header {
+    @extend .page-header;
+    pointer-events: none;
+    @media (max-width: $home-md) {
+      cursor: pointer;
+      pointer-events: all;
+    }
+  }
+  .tags-container {
+    display: flex;
+    flex-direction: column;
+    .text-container {
+      display: flex;
+      flex-wrap: wrap;
+      @media (max-width: $home-md) {
+        display: none;
+      }
+      .text-box {
+        @extend .label-box;
+        margin-top: 1rem;
+        background-color: wheat;
+        cursor: pointer;
+        &:not(:last-child) {
+          margin-right: 0.5rem;
+        }
+      }
+    }
+  }
+  .categ-container {
+    display: inline-flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    .categ-box {
+      border: 1px solid gray;
+      margin-block: 1rem;
+      @media (max-width: $home-md) {
+        display: none;
+      }
+      .single-box {
+        padding: 0.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        & > * {
+          cursor: pointer;
+        }
+        &:not(:last-child) {
+          border-bottom: 1px solid gray;
+        }
+        .count-box {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-width: 25px;
+          height: 25px;
+          border-radius: 50%;
+          background-color: $primaryBlue;
+          color: white !important;
+        }
+      }
+    }
+    .button {
+      margin-top: 1rem;
+    }
+  }
+  .display-block {
+    display: block !important;
+  }
+  .display-flex {
+    display: flex !important;
+  }
+}

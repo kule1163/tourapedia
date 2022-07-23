@@ -1,0 +1,15 @@
+@import "../../sass/main.scss";
+
+.notfoundpost-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: auto;
+  white-space: nowrap;
+  .text {
+    font-size: 1.6em;
+    color: $primaryRed;
+    text-align: center;
+  }
+}
