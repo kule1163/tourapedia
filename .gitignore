@@ -6,6 +6,8 @@
 /my-app/node_modules
 .pnp.js
 
+.env
+
 # testing
 /coverage
 
