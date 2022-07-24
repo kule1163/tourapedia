@@ -35,7 +35,9 @@ const CONNECTION_URL = process.env.CONNECTION_URL!;
 const PORT = process.env.PORT || 5000;
 
 mongoose
-  .connect(CONNECTION_URL)
+  .connect(
+    "mongodb+srv://kule1163:thv8pyyx4z@cluster0.zjlbe.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+  )
   .then(() =>
     app.listen(PORT, () => console.log(`server is listening ${PORT}`))
   )
