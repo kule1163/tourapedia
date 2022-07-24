@@ -10,7 +10,7 @@
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix my-app && npm run build --prefix my-app"
   },
   "keywords": [],
-  "author": "",
+  "author": "batu",
   "license": "ISC",
   "dependencies": {
     "@types/bcrypt": "^5.0.0",
