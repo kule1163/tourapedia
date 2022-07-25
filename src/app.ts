@@ -44,11 +44,11 @@ if (process.env.NODE_ENV === "production") {
 const CONNECTION_URL = process.env.CONNECTION_URL!;
 const PORT = process.env.PORT || 5000;
 
-mongoose
-  .connect(
-    "mongodb+srv://kule1163:thv8pyyx4z@cluster0.zjlbe.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
-  )
-  .then(() =>
-    app.listen(PORT, () => console.log(`server is listening ${PORT}`))
-  )
-  .catch((err) => console.log(err.message));
+if (CONNECTION_URL) {
+  mongoose
+    .connect(CONNECTION_URL)
+    .then(() =>
+      app.listen(PORT, () => console.log(`server is listening ${PORT}`))
+    )
+    .catch((err) => console.log(err.message));
+}
