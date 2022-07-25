@@ -17,7 +17,6 @@ import PageNotFound from "./components/pageNotFound/PageNotFound";
 import ProfileEdit from "./pages/profileEdit/ProfileEdit";
 import PasswordChange from "./pages/profileEdit/passwordChange/PasswordChange";
 import ResetPassword from "./pages/resetPassword/ResetPassword";
-
 function App() {
   const { pathname } = useLocation();
   const dispatch = useAppDispatch();

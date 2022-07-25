@@ -31,7 +31,7 @@ app.use("/posts", postRoute);
 app.use("/comment", commentRoute);
 app.use("/like", likeRoute);
 
-if (process.env.NODE_ENV === "production") {
+/* if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../my-app/build")));
 
   console.log(path.join(__dirname, "../my-app/build"));
@@ -39,7 +39,7 @@ if (process.env.NODE_ENV === "production") {
   app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "../my-app/build/index.html"));
   });
-}
+} */
 
 const CONNECTION_URL = process.env.CONNECTION_URL!;
 const PORT = process.env.PORT || 5000;
