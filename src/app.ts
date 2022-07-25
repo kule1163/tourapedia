@@ -50,7 +50,7 @@ if (MONGODB_URI) {
   mongoose
     .connect(MONGODB_URI)
     .then(() =>
-      app.listen(PORT, () => console.log(`server is listening ${PORT}`))
+      app.listen(PORT, () => console.log(`server is listeninggg ${PORT}`))
     )
     .catch((err) => console.log(err.message));
 }
