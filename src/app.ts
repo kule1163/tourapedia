@@ -44,7 +44,7 @@ if (process.env.NODE_ENV === "production") {
 const MONGODB_URI = process.env.MONGODB_URI!;
 const PORT = process.env.PORT || 5000;
 
-if (MONGODB_URI) {
+/* if (MONGODB_URI) {
   console.log(process.env.MONGODB_URI, process.env.PORT);
 
   mongoose
@@ -53,4 +53,4 @@ if (MONGODB_URI) {
       app.listen(PORT, () => console.log(`server is listeninggg ${PORT}`))
     )
     .catch((err) => console.log(err.message));
-}
+} */
