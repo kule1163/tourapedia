@@ -41,13 +41,11 @@
     "yup": "^0.32.11"
   },
   "scripts": {
-    "start": "serve -s build",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "clean": "tsc --build --clean",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "devStart": "react-scripts start",
-    "heroku-postbuild": "npm run build",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run"
   },
