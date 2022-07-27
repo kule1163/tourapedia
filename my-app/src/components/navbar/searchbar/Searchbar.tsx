@@ -38,16 +38,14 @@ const Searchbar = () => {
           value={searchValue}
           className="input"
           type="text"
-          placeholder="searchValue"
+          placeholder="Search"
         />
-
         <BiSearch
           className="search-icon"
           onClick={() => submitRef?.current?.click()}
           cursor="pointer"
           size={22}
         />
-
         <input
           ref={submitRef}
           type="submit"

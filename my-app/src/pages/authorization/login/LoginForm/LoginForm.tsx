@@ -84,9 +84,6 @@ const LoginForm = ({ login }: LoginProps) => {
           </Button>
         </form>
       </FormProvider>
-      <Button variant="contained" fullWidth color="error">
-        <AiOutlineGoogle /> GOOGLE SIGN IN
-      </Button>
       <div className="footer">
         <Typography onClick={() => navigate("/register")} className="text">
           Don't have an account ? Sign Up

@@ -19,9 +19,9 @@
   .dashboard-box {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     padding-inline: $padding-inline-md;
-    gap: 1.5rem;
+    gap: 3rem;
     @media (max-width: $sm-navbar) {
       padding-inline: $padding-inline-sm;
     }

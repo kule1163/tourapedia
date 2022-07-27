@@ -90,6 +90,8 @@ export const deletePost = createAsyncThunk(
       if (token) {
         await postServices.deletePost(id, token);
 
+        window.location.reload();
+
         return id;
       }
     } catch (error: any) {
