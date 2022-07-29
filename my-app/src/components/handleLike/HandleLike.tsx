@@ -70,7 +70,6 @@ const HandleLike = <T extends GenericProps>({
         <div className="like-container">
           <div className="like-box">
             <div
-              data-testId="like"
               style={{
                 pointerEvents: likeStatus === "pending" ? "none" : "auto",
               }}
@@ -92,7 +91,6 @@ const HandleLike = <T extends GenericProps>({
           </div>
           <div className="like-box">
             <div
-              data-testId="dislike"
               style={{
                 pointerEvents: likeStatus === "pending" ? "none" : "auto",
               }}
