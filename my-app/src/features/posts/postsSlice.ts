@@ -24,7 +24,7 @@ export interface PostState {
   deleteStatus: "idle" | "pending" | "succeeded" | "failed";
   paginationToursStatus: "idle" | "pending" | "succeeded" | "failed";
   likeStatus: "idle" | "pending" | "succeeded" | "failed";
-  entities: EntitieProps[];
+  allPost: EntitieProps[];
   paginationTours: PaginateTourProps;
   singlePost: EntitieProps;
   message: any;
@@ -42,7 +42,7 @@ export const initialState: PostState = {
   deleteStatus: "idle",
   paginationToursStatus: "idle",
   likeStatus: "idle",
-  entities: [],
+  allPost: [],
   paginationTours: {} as PaginateTourProps,
   singlePost: {} as EntitieProps,
   message: "",
@@ -71,7 +71,7 @@ export const postsSlice = createSlice({
       state.message = "";
     },
     setCurrentPost: (state, action: PayloadAction<string>) => {
-      const currentPost = state.entities.find(
+      const currentPost = state.allPost.find(
         (item) => item._id === action.payload
       );
 
@@ -90,7 +90,7 @@ export const postsSlice = createSlice({
     builder.addCase(getUserPosts.fulfilled, (state, action) => {
       state.status = "succeeded";
       if (action.payload) {
-        state.entities = action.payload.data;
+        state.allPost = action.payload.data;
         state.currentPage = action.payload.currentPage;
         state.numberOfPages = action.payload.numberOfPages;
       }
@@ -117,7 +117,7 @@ export const postsSlice = createSlice({
     });
     builder.addCase(getAllPosts.fulfilled, (state, action) => {
       state.paginationToursStatus = "succeeded";
-      state.entities = action.payload.data;
+      state.allPost = action.payload.data;
       state.currentPage = action.payload.currentPage;
       state.numberOfPages = action.payload.numberOfPages;
     });
@@ -131,7 +131,7 @@ export const postsSlice = createSlice({
     });
     builder.addCase(getRelatedPosts.fulfilled, (state, action) => {
       state.status = "succeeded";
-      state.entities = action.payload;
+      state.allPost = action.payload;
     });
     builder.addCase(getRelatedPosts.rejected, (state, action) => {
       state.status = "failed";
@@ -143,7 +143,7 @@ export const postsSlice = createSlice({
       state.addTourStatus = "pending";
     });
     builder.addCase(createPost.fulfilled, (state, action) => {
-      state.entities = [...state.entities, action.payload];
+      state.allPost = [...state.allPost, action.payload];
       state.addTourStatus = "succeeded";
     });
     builder.addCase(createPost.rejected, (state, action) => {
@@ -167,7 +167,7 @@ export const postsSlice = createSlice({
     });
     builder.addCase(deletePost.fulfilled, (state, action) => {
       state.deleteStatus = "succeeded";
-      state.entities = state.entities.filter(
+      state.allPost = state.allPost.filter(
         (item) => item._id !== action.payload
       );
     });
@@ -182,7 +182,7 @@ export const postsSlice = createSlice({
     builder.addCase(likePost.fulfilled, (state, action) => {
       state.likeStatus = "succeeded";
       if (action.payload) {
-        state.entities = state.entities.map((item) =>
+        state.allPost = state.allPost.map((item) =>
           item._id === action.payload?.updatedPost._id
             ? { ...item, likes: [...item.likes, action.payload.userId] }
             : item
@@ -200,7 +200,7 @@ export const postsSlice = createSlice({
     builder.addCase(dislikePost.fulfilled, (state, action) => {
       state.likeStatus = "succeeded";
       if (action.payload) {
-        state.entities = state.entities.map((item) =>
+        state.allPost = state.allPost.map((item) =>
           item._id === action.payload?.updatedPost._id
             ? {
                 ...item,
@@ -222,7 +222,7 @@ export const postsSlice = createSlice({
     });
     builder.addCase(getPostsByTag.fulfilled, (state, action) => {
       state.status = "succeeded";
-      state.entities = action.payload;
+      state.allPost = action.payload;
     });
     builder.addCase(getPostsByTag.rejected, (state, action) => {
       state.status = "failed";
@@ -234,7 +234,7 @@ export const postsSlice = createSlice({
     });
     builder.addCase(getPostByCateg.fulfilled, (state, action) => {
       state.status = "succeeded";
-      state.entities = action.payload;
+      state.allPost = action.payload;
     });
     builder.addCase(getPostByCateg.rejected, (state, action) => {
       state.status = "failed";
@@ -246,7 +246,7 @@ export const postsSlice = createSlice({
     });
     builder.addCase(searchPosts.fulfilled, (state, action) => {
       state.paginationToursStatus = "succeeded";
-      state.entities = action.payload.data;
+      state.allPost = action.payload.data;
       state.currentPage = action.payload.currentPage;
       state.numberOfPages = action.payload.numberOfPages;
     });
@@ -260,7 +260,7 @@ export const postsSlice = createSlice({
     });
     builder.addCase(upLike.fulfilled, (state, action) => {
       state.likeStatus = "succeeded";
-      state.entities = state.entities.map((item) =>
+      state.allPost = state.allPost.map((item) =>
         item._id === action.payload.postId
           ? {
               ...item,
@@ -282,7 +282,7 @@ export const postsSlice = createSlice({
     });
     builder.addCase(unLike.fulfilled, (state, action) => {
       state.likeStatus = "succeeded";
-      const currentPost = state.entities.find(
+      const currentPost = state.allPost.find(
         (item) => item._id === action.payload.postId
       );
       if (currentPost) {
@@ -301,7 +301,7 @@ export const postsSlice = createSlice({
     });
     builder.addCase(upDislike.fulfilled, (state, action) => {
       state.likeStatus = "succeeded";
-      state.entities = state.entities.map((item) =>
+      state.allPost = state.allPost.map((item) =>
         item._id === action.payload.postId
           ? {
               ...item,
@@ -323,7 +323,7 @@ export const postsSlice = createSlice({
     });
     builder.addCase(unDislike.fulfilled, (state, action) => {
       state.likeStatus = "succeeded";
-      const currentPost = state.entities.find(
+      const currentPost = state.allPost.find(
         (item) => item._id === action.payload.postId
       );
       if (currentPost) {

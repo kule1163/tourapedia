@@ -23,7 +23,7 @@ const Home = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
-  const { entities } = useAppSelector((state) => state.posts);
+  const { allPost } = useAppSelector((state) => state.posts);
   const postStatus = useAppSelector(
     (state) => state.posts.paginationToursStatus
   );
@@ -57,8 +57,6 @@ const Home = () => {
     }
   }, [currentPage, searchQuery]);
 
-  console.log(entities);
-
   return (
     <div className="home-container">
       {postStatus === "pending" && (
@@ -74,17 +72,17 @@ const Home = () => {
           {postStatus === "succeeded" && (
             <>
               <div className="first-section">
-                {searchQuery && entities.length === 0 && (
+                {searchQuery && allPost.length === 0 && (
                   <NotFoundPost
                     text={`No tour by search query: "${searchQuery}"`}
                   />
                 )}
                 <div className="posts-box">
-                  {entities.map((item) => (
+                  {allPost.map((item) => (
                     <SinglePost key={item._id} post={item} />
                   ))}
                 </div>
-                {entities.length > 0 && postStatus === "succeeded" && (
+                {allPost.length > 0 && postStatus === "succeeded" && (
                   <div className="pagination-box">
                     <Pagination />
                   </div>
