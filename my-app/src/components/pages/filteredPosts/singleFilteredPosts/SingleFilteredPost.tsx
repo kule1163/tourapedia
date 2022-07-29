@@ -16,13 +16,7 @@ const SingleFilteredPost = ({ filteredPost }: SingleFilteredPostProps) => {
     <div className="single-filtered-post-container">
       <div className="single-filtered-post-box">
         <div className="img-box">
-          <img
-            src={
-              filteredPost.postImage
-                ? `http://localhost:5000/uploads/postPhotos/${filteredPost.postImage}`
-                : DefaultImage
-            }
-          />
+          <img src={filteredPost.postImage.url} />
         </div>
         <div className="content-continer">
           <Typography className="header-text">{filteredPost.title}</Typography>
