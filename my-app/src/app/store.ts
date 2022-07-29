@@ -37,7 +37,7 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, reducers);
 
-/* export const store = configureStore({
+export const store = configureStore({
   reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
@@ -45,7 +45,7 @@ const persistedReducer = persistReducer(persistConfig, reducers);
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
-}); */
+});
 
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;
