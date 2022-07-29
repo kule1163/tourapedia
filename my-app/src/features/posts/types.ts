@@ -1,5 +1,3 @@
-import { UserProps } from "../auth/types";
-
 export interface EntitieProps {
   category: string;
   description: string;
