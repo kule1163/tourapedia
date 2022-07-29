@@ -43,7 +43,12 @@ const userSchema = new mongoose_1.Schema({
         required: [true, "Please add a password"],
     },
     profilePhoto: {
-        type: String,
+        url: {
+            type: String,
+        },
+        public_id: {
+            type: String,
+        },
     },
     expireToken: {
         type: String,

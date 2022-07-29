@@ -47,7 +47,12 @@ const postSchema = new mongoose_1.Schema({
         required: [true, "Please add tags"],
     },
     postImage: {
-        type: String,
+        url: {
+            type: String,
+        },
+        public_id: {
+            type: String,
+        },
     },
     likes: [{ type: mongoose_1.Schema.Types.ObjectId, ref: "UserAuth" }],
     dislikes: [{ type: mongoose_1.Schema.Types.ObjectId, ref: "UserAuth" }],

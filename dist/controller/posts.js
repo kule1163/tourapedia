@@ -15,9 +15,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.getToursBySearch = exports.getTourByCategory = exports.getRelatedPosts = exports.getToursByTag = exports.getSinglePost = exports.dislikePost = exports.likePost = exports.deletePost = exports.updatePost = exports.createPost = exports.getToursByUser = exports.getPosts = void 0;
 const mongoose_1 = __importDefault(require("mongoose"));
 const postModel_1 = __importDefault(require("../models/postModel"));
-const fs_1 = __importDefault(require("fs"));
-const path_1 = __importDefault(require("path"));
 const express_async_handler_1 = __importDefault(require("express-async-handler"));
+const cloudinary_1 = __importDefault(require("../utils/cloudinary"));
 exports.getPosts = (0, express_async_handler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { page } = req.query;
     const limit = 3;
@@ -70,7 +69,16 @@ exports.createPost = (0, express_async_handler_1.default)((req, res) => __awaite
             res.status(400);
             throw new Error("please add all field");
         }
-        const post = new postModel_1.default(Object.assign(Object.assign({}, req.body), { postImage: (_a = req.file) === null || _a === void 0 ? void 0 : _a.filename, user: req.currentUser.id }));
+        let result;
+        if (req.file) {
+            result = yield cloudinary_1.default.uploader.upload((_a = req.file) === null || _a === void 0 ? void 0 : _a.path);
+        }
+        const post = new postModel_1.default(Object.assign(Object.assign({}, req.body), { postImage: {
+                url: result
+                    ? result.secure_url
+                    : "https://res.cloudinary.com/da30n9tw5/image/upload/v1659043847/cld-sample-2.jpg",
+                public_id: result ? result.public_id : "default",
+            }, user: req.currentUser.id }));
         if (post) {
             post.save();
             res.status(201).json(post);
@@ -96,13 +104,14 @@ exports.updatePost = (0, express_async_handler_1.default)((req, res) => __awaite
         }
         let newPost;
         if (req.file) {
-            fs_1.default.unlink(path_1.default.join(__dirname, `../uploads/postPhotos/${post.postImage}`), (err) => {
-                if (err) {
-                    console.log(err);
-                    return;
-                }
-            });
-            newPost = Object.assign(Object.assign({}, req.body), { postImage: (_c = req.file) === null || _c === void 0 ? void 0 : _c.filename, _id: id });
+            yield cloudinary_1.default.uploader.destroy(post.postImage.public_id);
+            const result = yield cloudinary_1.default.uploader.upload((_c = req.file) === null || _c === void 0 ? void 0 : _c.path);
+            newPost = Object.assign(Object.assign({}, req.body), { postImage: {
+                    url: result
+                        ? result.secure_url
+                        : "https://res.cloudinary.com/da30n9tw5/image/upload/v1659043847/cld-sample-2.jpg",
+                    public_id: result ? result.public_id : "default",
+                }, _id: id });
         }
         else {
             newPost = {
@@ -134,12 +143,7 @@ exports.deletePost = (0, express_async_handler_1.default)((req, res) => __awaite
         throw new Error("user not authorized");
     }
     if (post) {
-        fs_1.default.unlink(path_1.default.join(__dirname, `../uploads/${post.postImage}`), (err) => {
-            if (err) {
-                console.log(err);
-                return;
-            }
-        });
+        yield cloudinary_1.default.uploader.destroy(post.postImage.public_id);
     }
     yield post.remove();
     res.status(200).json({ id: req.params.id });

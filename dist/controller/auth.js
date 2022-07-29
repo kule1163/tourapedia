@@ -17,8 +17,7 @@ const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const userModel_1 = __importDefault(require("../models/userModel"));
 const express_async_handler_1 = __importDefault(require("express-async-handler"));
-const fs_1 = __importDefault(require("fs"));
-const path_1 = __importDefault(require("path"));
+const cloudinary_1 = __importDefault(require("../utils/cloudinary"));
 const sendEmail = require("../utils/sendEmail");
 const generateToken = (id) => {
     return jsonwebtoken_1.default.sign({ id }, process.env.JWT_SECRET, {
@@ -59,7 +58,7 @@ exports.resetPassword = (0, express_async_handler_1.default)((req, res) => __awa
     }
 }));
 exports.registerUser = (0, express_async_handler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    var _a, _b;
+    var _a;
     const { firstname, lastname, email, password } = req.body;
     if (!firstname || !lastname || !email || !password) {
         res.status(400);
@@ -72,12 +71,21 @@ exports.registerUser = (0, express_async_handler_1.default)((req, res) => __awai
     }
     const salt = yield bcryptjs_1.default.genSalt(10);
     const hashedPassword = yield bcryptjs_1.default.hash(password, salt);
+    let result;
+    if (req.file) {
+        result = yield cloudinary_1.default.uploader.upload((_a = req.file) === null || _a === void 0 ? void 0 : _a.path);
+    }
     const user = yield userModel_1.default.create({
         firstname,
         lastname,
         email,
         password: hashedPassword,
-        profilePhoto: (_a = req.file) === null || _a === void 0 ? void 0 : _a.filename,
+        profilePhoto: {
+            url: result
+                ? result.secure_url
+                : "https://res.cloudinary.com/da30n9tw5/image/upload/v1659043847/cld-sample-2.jpg",
+            public_id: result ? result.public_id : "default",
+        },
     });
     if (user) {
         res.status(201).json({
@@ -85,7 +93,12 @@ exports.registerUser = (0, express_async_handler_1.default)((req, res) => __awai
             firstname: user.firstname,
             lastname: user.lastname,
             email: user.email,
-            profilePhoto: (_b = req.file) === null || _b === void 0 ? void 0 : _b.filename,
+            profilePhoto: {
+                url: result
+                    ? result.secure_url
+                    : "https://res.cloudinary.com/da30n9tw5/image/upload/v1659043847/cld-sample-2.jpg",
+                public_id: result ? result.public_id : "default",
+            },
             token: generateToken(user._id),
         });
     }
@@ -114,33 +127,38 @@ exports.changePassword = (0, express_async_handler_1.default)((req, res) => __aw
     }
 }));
 exports.editProfile = (0, express_async_handler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    var _c;
+    var _b;
+    const auth = yield userModel_1.default.findById(req.currentUser._id);
     let newUser;
-    if (req.file) {
-        fs_1.default.unlink(path_1.default.join(__dirname, `../uploads/profilePhotos/${req.currentUser.profilePhoto}`), (err) => {
-            if (err) {
-                console.log(err);
-                return;
-            }
-        });
-        newUser = {
-            firstname: req.body.firstname,
-            lastname: req.body.lastname,
-            profilePhoto: (_c = req.file) === null || _c === void 0 ? void 0 : _c.filename,
-            _id: req.currentUser._id,
-        };
+    if (auth) {
+        console.log(auth);
+        if (req.file) {
+            yield cloudinary_1.default.uploader.destroy(auth.profilePhoto.public_id);
+            const result = yield cloudinary_1.default.uploader.upload((_b = req.file) === null || _b === void 0 ? void 0 : _b.path);
+            newUser = {
+                firstname: req.body.firstname,
+                lastname: req.body.lastname,
+                profilePhoto: {
+                    url: result
+                        ? result.secure_url
+                        : "https://res.cloudinary.com/da30n9tw5/image/upload/v1659043847/cld-sample-2.jpg",
+                    public_id: result ? result.public_id : "default",
+                },
+                _id: req.currentUser._id,
+            };
+        }
+        else {
+            newUser = {
+                firstname: req.body.firstname,
+                lastname: req.body.lastname,
+                _id: req.currentUser._id,
+            };
+        }
+        const editedUser = yield userModel_1.default.findByIdAndUpdate(req.currentUser._id, newUser, { new: true }).select("-password");
+        res
+            .status(200)
+            .json({ editedUser, token: generateToken(req.currentUser._id) });
     }
-    else {
-        newUser = {
-            firstname: req.body.firstname,
-            lastname: req.body.lastname,
-            _id: req.currentUser._id,
-        };
-    }
-    const editedUser = yield userModel_1.default.findByIdAndUpdate(req.currentUser._id, newUser, { new: true }).select("-password");
-    res
-        .status(200)
-        .json({ editedUser, token: generateToken(req.currentUser._id) });
 }));
 exports.loginUser = (0, express_async_handler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { email, password } = req.body;
@@ -157,7 +175,6 @@ exports.loginUser = (0, express_async_handler_1.default)((req, res) => __awaiter
     }
     else {
         res.status(400).send("invalid user");
-        /* throw new Error("invalid user"); */
     }
 }));
 exports.getMe = (0, express_async_handler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
