@@ -2,10 +2,10 @@
 
 describe("handle features", () => {
   it("change page", () => {
-    cy.intercept("GET", "http://localhost:5000/posts/?page=1", {
+    cy.intercept("GET", "/posts/?page=1", {
       fixture: "tours1.json",
     });
-    cy.intercept("GET", "http://localhost:5000/posts/?page=2", {
+    cy.intercept("GET", "/posts/?page=2", {
       fixture: "tours2.json",
     });
 
@@ -25,10 +25,10 @@ describe("handle features", () => {
   });
 
   it("click populer tag", () => {
-    cy.intercept("GET", "http://localhost:5000/posts/?page=1", {
+    cy.intercept("GET", "/posts/?page=1", {
       fixture: "tours1.json",
     });
-    cy.intercept("GET", "http://localhost:5000/posts/tag/historic", {
+    cy.intercept("GET", "/posts/tag/historic", {
       fixture: "tagHistoric.json",
     });
 
@@ -39,10 +39,10 @@ describe("handle features", () => {
   });
 
   it("click populer category", () => {
-    cy.intercept("GET", "http://localhost:5000/posts/?page=1", {
+    cy.intercept("GET", "/posts/?page=1", {
       fixture: "tours1.json",
     });
-    cy.intercept("GET", "http://localhost:5000/posts/category/beach", {
+    cy.intercept("GET", "/posts/category/beach", {
       fixture: "categoryBeach.json",
     });
 

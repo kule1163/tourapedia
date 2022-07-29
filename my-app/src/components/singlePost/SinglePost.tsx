@@ -3,7 +3,6 @@ import { Typography } from "@mui/material";
 import "./styles.scss";
 import { EntitieProps } from "../../features/posts/types";
 import { useNavigate } from "react-router-dom";
-import DefaultImage from "../../assets/defaultImage.jpg";
 import HandleLike from "../handleLike/HandleLike";
 
 interface SinglePostProps {
@@ -19,13 +18,7 @@ const SinglePost = ({ post }: SinglePostProps) => {
         <div className="single-post-container">
           <div className="single-post-box">
             <div className="img-box">
-              <img
-                src={
-                  post.postImage
-                    ? `http://localhost:5000/uploads/postPhotos/${post.postImage}`
-                    : DefaultImage
-                }
-              />
+              <img src={post.postImage.url} />
             </div>
             <div
               onClick={() => {

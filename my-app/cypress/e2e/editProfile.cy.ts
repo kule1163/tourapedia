@@ -8,8 +8,9 @@ describe("edit profile", () => {
     cy.get('.menu-items-container > [data-testid="edit"]').click();
 
     cy.get("input[type=file]").selectFile(
-      "C:/Users/asüs/OneDrive/Masaüstü/Yeni klasör (5)/my-app/src/assets/hqdefault.jpg"
+      "C:/Users/asüs/OneDrive/Masaüstü/Yeni klasör (19)/my-app/src/assets/hqdefault.jpg"
     );
+
     cy.getByName("firstname").clear().type("edited firstname");
     cy.getByName("lastname").clear().type("edited lastname");
 
@@ -23,11 +24,12 @@ describe("edit profile", () => {
     cy.get('.menu-items-container > [data-testid="edit"]').click();
     cy.get(".MuiButton-text").click();
 
-    cy.getByName("oldPassword").type("1907");
-    cy.getByName("newPassword").type("1998");
-    cy.getByName("newPassword2").type("1998");
+    cy.getByName("oldPassword").type("1998");
+    cy.getByName("newPassword").type("1907");
+    cy.getByName("newPassword2").type("1907");
 
     cy.get("button[type=submit]").click();
+
     cy.url().should("contain", "/");
   }); */
 });

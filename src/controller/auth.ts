@@ -4,8 +4,8 @@ import bcrypt from "bcryptjs";
 import UserAuth from "../models/userModel";
 import { Types } from "mongoose";
 import asyncHandler from "express-async-handler";
-import fs from "fs";
-import path from "path";
+import cloudinary from "../utils/cloudinary";
+
 const sendEmail = require("../utils/sendEmail");
 
 const generateToken = (id: Types.ObjectId) => {
@@ -81,12 +81,23 @@ export const registerUser = asyncHandler(
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
+    let result;
+
+    if (req.file) {
+      result = await cloudinary.uploader.upload(req.file?.path);
+    }
+
     const user = await UserAuth.create({
       firstname,
       lastname,
       email,
       password: hashedPassword,
-      profilePhoto: req.file?.filename,
+      profilePhoto: {
+        url: result
+          ? result.secure_url
+          : "https://res.cloudinary.com/da30n9tw5/image/upload/v1659043847/cld-sample-2.jpg",
+        public_id: result ? result.public_id : "default",
+      },
     });
 
     if (user) {
@@ -95,7 +106,12 @@ export const registerUser = asyncHandler(
         firstname: user.firstname,
         lastname: user.lastname,
         email: user.email,
-        profilePhoto: req.file?.filename,
+        profilePhoto: {
+          url: result
+            ? result.secure_url
+            : "https://res.cloudinary.com/da30n9tw5/image/upload/v1659043847/cld-sample-2.jpg",
+          public_id: result ? result.public_id : "default",
+        },
         token: generateToken(user._id),
       });
     } else {
@@ -129,45 +145,46 @@ export const changePassword = asyncHandler(async (req, res) => {
 });
 
 export const editProfile = asyncHandler(async (req, res) => {
+  const auth = await UserAuth.findById(req.currentUser._id);
+
   let newUser;
 
-  if (req.file) {
-    fs.unlink(
-      path.join(
-        __dirname,
-        `../uploads/profilePhotos/${req.currentUser.profilePhoto}`
-      ),
-      (err) => {
-        if (err) {
-          console.log(err);
-          return;
-        }
-      }
-    );
+  if (auth) {
+    console.log(auth);
 
-    newUser = {
-      firstname: req.body.firstname,
-      lastname: req.body.lastname,
-      profilePhoto: req.file?.filename,
-      _id: req.currentUser._id,
-    };
-  } else {
-    newUser = {
-      firstname: req.body.firstname,
-      lastname: req.body.lastname,
-      _id: req.currentUser._id,
-    };
+    if (req.file) {
+      await cloudinary.uploader.destroy(auth.profilePhoto.public_id);
+      const result = await cloudinary.uploader.upload(req.file?.path);
+
+      newUser = {
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        profilePhoto: {
+          url: result
+            ? result.secure_url
+            : "https://res.cloudinary.com/da30n9tw5/image/upload/v1659043847/cld-sample-2.jpg",
+          public_id: result ? result.public_id : "default",
+        },
+        _id: req.currentUser._id,
+      };
+    } else {
+      newUser = {
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        _id: req.currentUser._id,
+      };
+    }
+
+    const editedUser = await UserAuth.findByIdAndUpdate(
+      req.currentUser._id,
+      newUser,
+      { new: true }
+    ).select("-password");
+
+    res
+      .status(200)
+      .json({ editedUser, token: generateToken(req.currentUser._id) });
   }
-
-  const editedUser = await UserAuth.findByIdAndUpdate(
-    req.currentUser._id,
-    newUser,
-    { new: true }
-  ).select("-password");
-
-  res
-    .status(200)
-    .json({ editedUser, token: generateToken(req.currentUser._id) });
 });
 
 export const loginUser = asyncHandler(async (req: Request, res: Response) => {
@@ -186,7 +203,6 @@ export const loginUser = asyncHandler(async (req: Request, res: Response) => {
     });
   } else {
     res.status(400).send("invalid user");
-    /* throw new Error("invalid user"); */
   }
 });
 

@@ -10,7 +10,11 @@
       "title": "mithras",
       "updatedAt": "2022-07-09T18:34:49.814Z",
       "user": "62c871859ef28f661a27a8d7",
-      "_id": "62c9ca49c92f7771e51c7bd9"
+      "_id": "62c9ca49c92f7771e51c7bd9",
+      "postImage": {
+        "url": "https://res.cloudinary.com/da30n9tw5/image/upload/v1659043847/cld-sample-2.jpg",
+        "public_id": "default"
+      }
     },
     {
       "category": "hill",
@@ -22,7 +26,11 @@
       "title": "kapadokya",
       "updatedAt": "2022-07-09T18:34:49.814Z",
       "user": "62c871859ef28f661a27a8d7",
-      "_id": "62c9ca49c92f7771e51c7bd9"
+      "_id": "62c9ca49c92f7771e51c7bd9",
+      "postImage": {
+        "url": "https://res.cloudinary.com/da30n9tw5/image/upload/v1659043847/cld-sample-2.jpg",
+        "public_id": "default"
+      }
     },
     {
       "category": "beach",
@@ -34,7 +42,11 @@
       "title": "maldivs",
       "updatedAt": "2022-07-09T18:34:49.814Z",
       "user": "62c871859ef28f661a27a8d7",
-      "_id": "62c9ca49c92f7771e51c7bd9"
+      "_id": "62c9ca49c92f7771e51c7bd9",
+      "postImage": {
+        "url": "https://res.cloudinary.com/da30n9tw5/image/upload/v1659043847/cld-sample-2.jpg",
+        "public_id": "default"
+      }
     }
   ],
   "currentPage": 1,

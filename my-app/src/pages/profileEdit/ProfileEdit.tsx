@@ -14,20 +14,28 @@ const ProfileEdit = () => {
   return (
     <>
       {user && (
-        <div className="max">
-          <div className="log-reg-container">
-            {true ? (
-              <div className="spinner-box">aaaaaaaaaa</div>
-            ) : (
-              <div className="log-reg-box">
-                {editToggle ? <ProfileEditForm /> : <PasswordChange />}
-                <Button onClick={() => setEditToggle((prev) => !prev)}>
-                  {editToggle ? "change password" : "edit profile"}
-                </Button>
+        <>
+          {editStatus === "pending" ? (
+            <div
+              style={{ width: "100vw", height: "100vh", position: "relative" }}
+            >
+              <div className="spinner-box">
+                <Spinner />
               </div>
-            )}
-          </div>
-        </div>
+            </div>
+          ) : (
+            <div className="max">
+              <div className="log-reg-container">
+                <div className="log-reg-box">
+                  {editToggle ? <ProfileEditForm /> : <PasswordChange />}
+                  <Button onClick={() => setEditToggle((prev) => !prev)}>
+                    {editToggle ? "change password" : "edit profile"}
+                  </Button>
+                </div>
+              </div>
+            </div>
+          )}
+        </>
       )}
     </>
   );

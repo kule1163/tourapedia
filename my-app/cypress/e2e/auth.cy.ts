@@ -54,7 +54,7 @@ describe("auth", () => {
     });
   });
 
-  /* describe("forget password", () => {
+  describe("forget password", () => {
     it("forget password", () => {
       cy.visit("/login");
       cy.get(".MuiButton-text").click();
@@ -66,5 +66,5 @@ describe("auth", () => {
         "Please check your email. We send a reset link to reset your password"
       ).should("be.visible");
     });
-  }); */
+  });
 });

@@ -5,7 +5,10 @@ export interface UserSchemaProps {
   lastname: string;
   email: string;
   password: string;
-  profilePhoto: string;
+  profilePhoto: {
+    url: string;
+    public_id: string;
+  };
   expireToken: string;
 }
 
@@ -29,7 +32,12 @@ const userSchema = new Schema<UserSchemaProps>(
       required: [true, "Please add a password"],
     },
     profilePhoto: {
-      type: String,
+      url: {
+        type: String,
+      },
+      public_id: {
+        type: String,
+      },
     },
     expireToken: {
       type: String,

@@ -7,7 +7,10 @@ export interface PostModelSchema {
   description: string;
   category: string;
   tags: string[];
-  postImage: string;
+  postImage: {
+    url: string;
+    public_id: string;
+  };
   likes: Schema.Types.ObjectId[];
   dislikes: Schema.Types.ObjectId[];
 }
@@ -36,7 +39,12 @@ const postSchema = new Schema<PostModelSchema>(
       required: [true, "Please add tags"],
     },
     postImage: {
-      type: String,
+      url: {
+        type: String,
+      },
+      public_id: {
+        type: String,
+      },
     },
 
     likes: [{ type: Schema.Types.ObjectId, ref: "UserAuth" }],

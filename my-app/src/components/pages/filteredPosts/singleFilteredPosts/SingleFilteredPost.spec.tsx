@@ -17,25 +17,10 @@ const filteredPost: EntitieProps = {
   description: "dsa",
   category: "beach",
   tags: ["a", "b"],
-  postImage: "5835be20-5485-4ad7-8503-23e9a191e2d8-1655318862553.jpg",
-  likes: ["62aa294334bef8254dc5658e"],
-  dislikes: ["62aa294334bef8254dc51907"],
-  createdAt: "2022-06-15T18:47:42.639+00:00",
-  updatedAt: "2022-06-15T18:47:42.639+00:00",
-};
-
-const filteredPost2: EntitieProps = {
-  _id: "62aa294e34bef8254dc56595",
-  user: {
-    _id: "62aa294334bef8254dc5658e",
-    firstname: "batu",
-    lastname: "kır",
+  postImage: {
+    url: "https://res.cloudinary.com/da30n9tw5/image/upload/v1659043847/cld-sample-2.jpg",
+    public_id: "default",
   },
-  title: "qwe",
-  description: "qwe",
-  category: "sea",
-  tags: ["a", "b"],
-  postImage: undefined,
   likes: ["62aa294334bef8254dc5658e"],
   dislikes: ["62aa294334bef8254dc51907"],
   createdAt: "2022-06-15T18:47:42.639+00:00",
@@ -52,19 +37,7 @@ describe("Filtered Posts", () => {
       </BrowserRouter>
     );
     expect(((await screen.findByRole("img")) as HTMLImageElement).src).toBe(
-      "http://localhost:5000/uploads/postPhotos/5835be20-5485-4ad7-8503-23e9a191e2d8-1655318862553.jpg"
-    );
-  });
-  it("filtered posts no image", async () => {
-    render(
-      <BrowserRouter>
-        <Provider store={store}>
-          <SingleFilteredPost filteredPost={filteredPost2} />
-        </Provider>
-      </BrowserRouter>
-    );
-    expect(((await screen.findByRole("img")) as HTMLImageElement).src).toBe(
-      "http://localhost/defaultImage.jpg"
+      "https://res.cloudinary.com/da30n9tw5/image/upload/v1659043847/cld-sample-2.jpg"
     );
   });
 });

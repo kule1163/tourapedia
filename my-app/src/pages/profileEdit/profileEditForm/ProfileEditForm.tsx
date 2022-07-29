@@ -6,10 +6,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { schema } from "./FormValidation";
 import NestedInput from "../../../components/handleFormInput/nestedInput/NestedInput";
 import { Button } from "@mui/material";
-import { useNavigate } from "react-router-dom";
 import { editProfile } from "../../../features/auth/asyncThunks";
 import InputError from "../../../components/handleFormInput/inputError/InputError";
-import Spinner from "../../../components/spinner/Spinner";
 
 interface Inputs {
   firstname: string;
@@ -24,10 +22,7 @@ interface ProfileEditFormProps {
 const ProfileEditForm = ({ submit }: ProfileEditFormProps) => {
   const dispatch = useAppDispatch();
   const user = useAppSelector((state) => state.auth.user);
-  const editStatus = useAppSelector((state) => state.auth.editStatus);
-
   const methods = useForm<Inputs>({ resolver: yupResolver(schema) });
-
   const newPhoto = methods.watch("file");
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
@@ -65,11 +60,8 @@ const ProfileEditForm = ({ submit }: ProfileEditFormProps) => {
                 className="profile-photo"
                 src={URL.createObjectURL(newPhoto[0])}
               />
-            ) : user.profilePhoto ? (
-              <img
-                className="profile-photo"
-                src={`http://localhost:5000/uploads/profilePhotos/${user.profilePhoto}`}
-              />
+            ) : user.profilePhoto.public_id !== "default" ? (
+              <img className="profile-photo" src={user.profilePhoto.url} />
             ) : (
               <FaUserCircle style={{ width: 40, height: 40 }} />
             )}

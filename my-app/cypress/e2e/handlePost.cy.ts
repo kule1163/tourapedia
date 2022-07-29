@@ -72,7 +72,7 @@ describe("handle post", () => {
     cy.get('[data-value="historic"] > .MuiTypography-root').click();
     cy.get('[data-testid="description"]').type("edit", { force: true });
     cy.get("input[type=file]").selectFile(
-      "C:/Users/asüs/OneDrive/Masaüstü/Yeni klasör (5)/my-app/src/assets/hqdefault.jpg"
+      "C:/Users/asüs/OneDrive/Masaüstü/Yeni klasör (19)/my-app/src/assets/hqdefault.jpg"
     );
 
     cy.get(".MuiButton-root").click();

@@ -3,7 +3,10 @@ import { UserProps } from "../auth/types";
 export interface EntitieProps {
   category: string;
   description: string;
-  postImage?: string;
+  postImage: {
+    url: string;
+    public_id: string;
+  };
   tags: string[];
   title: string;
   user: {

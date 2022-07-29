@@ -3,6 +3,7 @@ import PostModel, { PostModelSchema } from "../models/postModel";
 import fs from "fs";
 import path from "path";
 import asyncHandler from "express-async-handler";
+import cloudinary from "../utils/cloudinary";
 
 export const getPosts = asyncHandler(async (req, res) => {
   const { page } = req.query;
@@ -65,9 +66,20 @@ export const createPost = asyncHandler(async (req, res) => {
       throw new Error("please add all field");
     }
 
+    let result;
+
+    if (req.file) {
+      result = await cloudinary.uploader.upload(req.file?.path);
+    }
+
     const post = new PostModel({
       ...req.body,
-      postImage: req.file?.filename,
+      postImage: {
+        url: result
+          ? result.secure_url
+          : "https://res.cloudinary.com/da30n9tw5/image/upload/v1659043847/cld-sample-2.jpg",
+        public_id: result ? result.public_id : "default",
+      },
       user: req.currentUser.id,
     });
 
@@ -101,19 +113,17 @@ export const updatePost = asyncHandler(async (req, res) => {
     let newPost;
 
     if (req.file) {
-      fs.unlink(
-        path.join(__dirname, `../uploads/postPhotos/${post.postImage}`),
-        (err) => {
-          if (err) {
-            console.log(err);
-            return;
-          }
-        }
-      );
+      await cloudinary.uploader.destroy(post.postImage.public_id);
+      const result = await cloudinary.uploader.upload(req.file?.path);
 
       newPost = {
         ...req.body,
-        postImage: req.file?.filename,
+        postImage: {
+          url: result
+            ? result.secure_url
+            : "https://res.cloudinary.com/da30n9tw5/image/upload/v1659043847/cld-sample-2.jpg",
+          public_id: result ? result.public_id : "default",
+        },
         _id: id,
       };
     } else {
@@ -153,12 +163,7 @@ export const deletePost = asyncHandler(async (req, res) => {
   }
 
   if (post) {
-    fs.unlink(path.join(__dirname, `../uploads/${post.postImage}`), (err) => {
-      if (err) {
-        console.log(err);
-        return;
-      }
-    });
+    await cloudinary.uploader.destroy(post.postImage.public_id);
   }
 
   await post.remove();
