@@ -8,7 +8,7 @@ import "./styles.scss";
 
 const RelatedPosts = () => {
   const post = useAppSelector((state) => state.posts.singlePost);
-  const relatedPosts = useAppSelector((state) => state.posts.entities);
+  const { allPost } = useAppSelector((state) => state.posts);
   const postStatus = useAppSelector((state) => state.posts.status);
   const dispatch = useAppDispatch();
 
@@ -36,7 +36,7 @@ const RelatedPosts = () => {
         <div className="line"></div>
       </div>
       <div className="related-post-box">
-        {relatedPosts.map((item) => (
+        {allPost.map((item) => (
           <SinglePost key={item._id} post={item} />
         ))}
       </div>

@@ -37,6 +37,8 @@ const Home = () => {
     dispatch(setSearchValue(""));
   }, []);
 
+  console.log(allPost);
+
   useEffect(() => {
     if (searchQuery) {
       dispatch(
@@ -77,11 +79,13 @@ const Home = () => {
                     text={`No tour by search query: "${searchQuery}"`}
                   />
                 )}
-                <div className="posts-box">
-                  {allPost.map((item) => (
-                    <SinglePost key={item._id} post={item} />
-                  ))}
-                </div>
+                {allPost.length > 0 && (
+                  <div className="posts-box">
+                    {allPost.map((item) => (
+                      <SinglePost key={item._id} post={item} />
+                    ))}
+                  </div>
+                )}
                 {allPost.length > 0 && postStatus === "succeeded" && (
                   <div className="pagination-box">
                     <Pagination />

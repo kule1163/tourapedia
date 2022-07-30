@@ -15,11 +15,10 @@ import Pagination from "../../components/pagination/Pagination";
 const Dashboard = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const userPosts = useAppSelector((state) => state.posts.entities);
-  const postStatus = useAppSelector((state) => state.posts.status);
-  const deleteStatus = useAppSelector((state) => state.posts.deleteStatus);
+  const { allPost, status, deleteStatus, currentPage } = useAppSelector(
+    (state) => state.posts
+  );
   const [currentItem, setCurrentItem] = useState<string>();
-  const currentPage = useAppSelector((state) => state.posts.currentPage);
 
   useEffect(() => {
     dispatch(setCurrentPage(1));
@@ -31,19 +30,19 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard-container">
-      {postStatus === "pending" ? (
+      {status === "pending" ? (
         <div className="spinner-box">
           <Spinner />
         </div>
       ) : (
         <>
-          {userPosts.length > 0 && (
+          {allPost.length > 0 && (
             <div className="header-box">
               <Typography className="header">My Tours</Typography>
             </div>
           )}
           <div className="dashboard-box">
-            {userPosts.map((item) => (
+            {allPost.map((item) => (
               <div key={item._id} className="single-box">
                 <SinglePost post={item} />
                 <div className="update-box">
@@ -77,7 +76,7 @@ const Dashboard = () => {
               </div>
             ))}
           </div>
-          {userPosts.length === 0 ? (
+          {allPost.length === 0 ? (
             <Typography
               sx={{
                 fontSize: "1.3em",

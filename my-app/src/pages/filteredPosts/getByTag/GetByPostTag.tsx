@@ -7,7 +7,7 @@ import { getPostsByTag } from "../../../features/posts/asyncThunks";
 const GetByPostTag = () => {
   const { tag } = useParams();
   const dispatch = useAppDispatch();
-  const filteredPosts = useAppSelector((state) => state.posts.entities);
+  const { allPost } = useAppSelector((state) => state.posts);
 
   useEffect(() => {
     if (tag) {
@@ -18,7 +18,7 @@ const GetByPostTag = () => {
   return (
     <FilteredPosts
       header={`Tours By Tag: ${tag}`}
-      filteredPosts={filteredPosts}
+      filteredPosts={allPost}
       text={`No tours by tag: "${tag}"`}
     />
   );

@@ -88,6 +88,8 @@ export const postsSlice = createSlice({
       state.status = "pending";
     });
     builder.addCase(getUserPosts.fulfilled, (state, action) => {
+      console.log(action.payload);
+
       state.status = "succeeded";
       if (action.payload) {
         state.allPost = action.payload.data;

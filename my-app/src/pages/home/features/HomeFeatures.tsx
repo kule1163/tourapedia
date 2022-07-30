@@ -8,7 +8,7 @@ import "./styles.scss";
 
 const HomeFeatures = () => {
   const navigate = useNavigate();
-  const allPosts = useAppSelector((state) => state.posts.entities);
+  const { allPost } = useAppSelector((state) => state.posts);
   const location = useLocation();
 
   const [displayCategory, setDisplayCategory] = useState<boolean>(false);
@@ -22,7 +22,7 @@ const HomeFeatures = () => {
 
   return (
     <>
-      {allPosts.length > 0 && (
+      {allPost.length > 0 && (
         <div className="home-features-container">
           <div className="tags-container">
             <Typography
