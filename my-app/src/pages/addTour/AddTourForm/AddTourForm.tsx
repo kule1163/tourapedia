@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import {
   useForm,
@@ -40,8 +40,6 @@ const AddTourForm = ({ addPost, currentPost, editPost }: AddTourFormProps) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
-  console.log(currentPost);
-
   const methods = useForm<Inputs>({
     resolver: yupResolver(schema),
   });
@@ -49,12 +47,14 @@ const AddTourForm = ({ addPost, currentPost, editPost }: AddTourFormProps) => {
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     const { category, description, file, tags, title } = data;
 
+    const uniqueTags = [...new Set(tags.split(","))];
+
     const formData = new FormData();
     formData.append("category", category);
     formData.append("description", description);
     formData.append("title", title);
     formData.append("postImage", file[0]);
-    tags.split(",").forEach((tag) => formData.append("tags[]", tag));
+    uniqueTags.forEach((tag) => formData.append("tags[]", tag));
 
     if (currentPost) {
       dispatch(updatePost({ formData, id: currentPost._id, navigate }));
@@ -70,6 +70,15 @@ const AddTourForm = ({ addPost, currentPost, editPost }: AddTourFormProps) => {
       }
     }
   };
+
+  useEffect(() => {
+    if (currentPost) {
+      methods.setValue("category", currentPost.category);
+      methods.setValue("description", currentPost.description);
+      methods.setValue("tags", currentPost.tags.join(","));
+      methods.setValue("title", currentPost.title);
+    }
+  }, [currentPost]);
 
   return (
     <div className="log-reg-container">

@@ -17,13 +17,13 @@ const MenuItems = () => {
         <>
           {byUserMenuItems.map((item) => (
             <div
+              key={item.id}
               style={{
                 pointerEvents: addTourStatus === "pending" ? "none" : "all",
               }}
               data-testid={item.item}
             >
               <ActiveLink
-                key={item.id}
                 to={item.url}
                 onClick={() => {
                   dispatch(setCurrentPost("reset"));
@@ -40,12 +40,12 @@ const MenuItems = () => {
         <>
           {menuItems.map((item) => (
             <div
+              key={item.id}
               style={{
                 pointerEvents: addTourStatus === "pending" ? "none" : "all",
               }}
             >
               <ActiveLink
-                key={item.id}
                 to={item.url}
                 onClick={() => {
                   dispatch(setDisplayMenu(false));

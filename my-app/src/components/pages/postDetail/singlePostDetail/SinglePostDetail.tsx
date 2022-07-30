@@ -19,13 +19,7 @@ const SinglePostDetail = ({ post }: SinglePostDetailProps) => {
   return (
     <div className="single-post-detail-container">
       <div className="single-post-detail-box">
-        <img
-          src={
-            post.postImage
-              ? `http://localhost:5000/uploads/postPhotos/${post.postImage}`
-              : DefaultImage
-          }
-        />
+        <img src={post.postImage.url} />
         <div className="content-container">
           <div className="header-box">
             <div onClick={() => navigate(-1)} className="header-icon">
@@ -39,7 +33,9 @@ const SinglePostDetail = ({ post }: SinglePostDetailProps) => {
           </Typography>
           <div className="tag-box">
             {post.tags.map((item) => (
-              <Typography className="text">#{item}</Typography>
+              <Typography key={item} className="text">
+                #{item}
+              </Typography>
             ))}
           </div>
           <div className="date-box">

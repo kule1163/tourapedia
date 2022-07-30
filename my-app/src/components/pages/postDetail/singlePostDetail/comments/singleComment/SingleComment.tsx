@@ -8,7 +8,6 @@ import {
   setReply,
 } from "../../../../../../features/comment/commentSlice";
 import CommentForm from "../commentForm/CommentForm";
-import DefaultImage from "../../../../../../assets/defaultImage.jpg";
 import "./styles.scss";
 import HandleLike from "../../../../../handleLike/HandleLike";
 import Spinner from "../../../../../spinner/Spinner";
@@ -27,13 +26,7 @@ const SingleComment = ({ comment }: SingleCommentProps) => {
       onClick={() => dispatch(setCurrentReply(comment._id))}
       className="single-comment-container"
     >
-      <img
-        src={
-          comment.writer.profilePhoto
-            ? `http://localhost:5000/uploads/profilePhotos/${comment.writer.profilePhoto}`
-            : DefaultImage
-        }
-      />
+      <img src={comment.writer.profilePhoto.url} />
       <div className="content-container">
         <div className="box">
           <Typography className="name">

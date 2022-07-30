@@ -37,8 +37,6 @@ const Home = () => {
     dispatch(setSearchValue(""));
   }, []);
 
-  console.log(allPost);
-
   useEffect(() => {
     if (searchQuery) {
       dispatch(

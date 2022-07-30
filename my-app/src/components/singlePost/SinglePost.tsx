@@ -12,8 +12,6 @@ interface SinglePostProps {
 const SinglePost = ({ post }: SinglePostProps) => {
   const navigate = useNavigate();
 
-  console.log(post);
-
   return (
     <>
       {post && (

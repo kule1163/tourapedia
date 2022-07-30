@@ -70,45 +70,47 @@ const HandleLike = <T extends GenericProps>({
         <div className="like-container">
           <div className="like-box">
             <div
+              data-testid="like"
               style={{
                 pointerEvents: likeStatus === "pending" ? "none" : "auto",
               }}
               onClick={() => handleLike()}
             >
               {item.likes.includes(user._id) ? (
-                <div data-testId="fill-like">
+                <div data-testid="fill-like">
                   <AiFillLike cursor="pointer" />
                 </div>
               ) : (
-                <div data-testId="outline-like">
+                <div data-testid="outline-like">
                   <AiOutlineLike cursor="pointer" />
                 </div>
               )}
             </div>
-            <Typography data-testId="like-count">
-              {item.likes.length}
-            </Typography>
+            <div data-testid="like-count">
+              <Typography>{item.likes.length}</Typography>
+            </div>
           </div>
           <div className="like-box">
             <div
+              data-testid="dislike"
               style={{
                 pointerEvents: likeStatus === "pending" ? "none" : "auto",
               }}
               onClick={() => handleDislike()}
             >
               {item.dislikes.includes(user._id) ? (
-                <div data-testId="fill-dislike">
+                <div data-testid="fill-dislike">
                   <AiFillDislike cursor="pointer" />
                 </div>
               ) : (
-                <div data-testId="outline-dislike">
+                <div data-testid="outline-dislike">
                   <AiOutlineDislike cursor="pointer" />
                 </div>
               )}
             </div>
-            <Typography data-testId="dislike-count">
-              {item.dislikes.length}
-            </Typography>
+            <div data-testid="dislike-count">
+              <Typography>{item.dislikes.length}</Typography>
+            </div>
           </div>
         </div>
       )}

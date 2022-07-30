@@ -62,13 +62,7 @@ const CommentForm = ({ commentId, submit }: CommentFormProps) => {
   return (
     <div className="comment-form-container">
       <>
-        <img
-          src={
-            user?.profilePhoto
-              ? `http://localhost:5000/uploads/profilePhotos/${user?.profilePhoto}`
-              : DefaultImage
-          }
-        />
+        <img src={user?.profilePhoto.url} />
         <FormProvider {...methods}>
           <form
             className="form-container"
