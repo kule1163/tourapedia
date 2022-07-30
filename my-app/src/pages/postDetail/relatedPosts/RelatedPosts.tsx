@@ -1,9 +1,9 @@
 import { Typography } from "@mui/material";
 import React, { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
-import { getRelatedPosts } from "../../../../features/posts/asyncThunks";
-import { resetPost } from "../../../../features/posts/postsSlice";
-import SinglePost from "../../../singlePost/SinglePost";
+import { useAppDispatch, useAppSelector } from "../../../app/hooks";
+import { getRelatedPosts } from "../../../features/posts/asyncThunks";
+import { resetPost } from "../../../features/posts/postsSlice";
+import SinglePost from "../../../components/singlePost/SinglePost";
 import "./styles.scss";
 
 const RelatedPosts = () => {

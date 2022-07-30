@@ -1,11 +1,11 @@
 import { Typography } from "@mui/material";
 import React from "react";
 import SingleFilteredPost from "./singleFilteredPosts/SingleFilteredPost";
-import { EntitieProps } from "../../../features/posts/types";
-import { useAppSelector } from "../../../app/hooks";
-import Spinner from "../../../components/spinner/Spinner";
+import { EntitieProps } from "../../features/posts/types";
+import { useAppSelector } from "../../app/hooks";
+import Spinner from "../../components/spinner/Spinner";
 import "./styles.scss";
-import NotFoundPost from "../../notFoundPost/NotFoundPost";
+import NotFoundPost from "../../components/notFoundPost/NotFoundPost";
 
 interface FilteredPostProps {
   filteredPosts: EntitieProps[];

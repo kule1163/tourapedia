@@ -9,20 +9,24 @@ import {
 } from "../controller/like";
 import { protect } from "../middleWares/authMiddleWare";
 import { likeVeriable } from "../middleWares/likeMiddleware";
-import { postUpload } from "../middleWares/multerMiddleware/postMulter";
+import { uploadMulter } from "../middleWares/multer";
 
 const router = express.Router();
 
-router.route("/getLikes").post([postUpload.any()], getLikes);
-router.route("/uplike").post([postUpload.any(), protect, likeVeriable], upLike);
-router.route("/unlike").post([postUpload.any(), protect, likeVeriable], unLike);
+router.route("/getLikes").post([uploadMulter.any()], getLikes);
+router
+  .route("/uplike")
+  .post([uploadMulter.any(), protect, likeVeriable], upLike);
+router
+  .route("/unlike")
+  .post([uploadMulter.any(), protect, likeVeriable], unLike);
 
-router.route("/getDislikes").post([postUpload.any()], getDislikes);
+router.route("/getDislikes").post([uploadMulter.any()], getDislikes);
 router
   .route("/upDislike")
-  .post([postUpload.any(), protect, likeVeriable], upDislike);
+  .post([uploadMulter.any(), protect, likeVeriable], upDislike);
 router
   .route("/unDislike")
-  .post([postUpload.any(), protect, likeVeriable], unDislike);
+  .post([uploadMulter.any(), protect, likeVeriable], unDislike);
 
 export default router;

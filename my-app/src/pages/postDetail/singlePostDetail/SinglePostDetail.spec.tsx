@@ -1,8 +1,8 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import { store } from "../../../../app/store";
-import { EntitieProps } from "../../../../features/posts/types";
+import { store } from "../../../app/store";
+import { EntitieProps } from "../../../features/posts/types";
 import SinglePostDetail from "./SinglePostDetail";
 import "@testing-library/jest-dom";
 

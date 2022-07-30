@@ -1,16 +1,16 @@
 import { Typography } from "@mui/material";
 import React, { memo } from "react";
-import { CommentProps } from "../../../../../../features/comment/types";
+import { CommentProps } from "../../../../../features/comment/types";
 import { Button } from "@mui/material";
-import { useAppDispatch, useAppSelector } from "../../../../../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../../../../app/hooks";
 import {
   setCurrentReply,
   setReply,
-} from "../../../../../../features/comment/commentSlice";
+} from "../../../../../features/comment/commentSlice";
 import CommentForm from "../commentForm/CommentForm";
 import "./styles.scss";
-import HandleLike from "../../../../../handleLike/HandleLike";
-import Spinner from "../../../../../spinner/Spinner";
+import HandleLike from "../../../../../components/handleLike/HandleLike";
+import Spinner from "../../../../../components/spinner/Spinner";
 
 interface SingleCommentProps {
   comment: CommentProps;

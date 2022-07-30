@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { getPostByCateg } from "../../../features/posts/asyncThunks";
-import FilteredPosts from "../../../components/pages/filteredPosts/FilteredPosts";
+import FilteredPosts from "../FilteredPosts";
 
 const GetByCategName = () => {
   const { categ } = useParams();

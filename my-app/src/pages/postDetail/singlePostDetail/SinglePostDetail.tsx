@@ -4,7 +4,7 @@ import Image from "../../../../assets/image.jpg";
 import { HiOutlineArrowNarrowLeft } from "react-icons/hi";
 import { CgCalendarDates } from "react-icons/cg";
 import "./styles.scss";
-import { EntitieProps } from "../../../../features/posts/types";
+import { EntitieProps } from "../../../features/posts/types";
 import { useNavigate } from "react-router-dom";
 import moment from "moment";
 import DefaultImage from "../../../../assets/defaultImage.jpg";

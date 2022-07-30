@@ -9,21 +9,21 @@ import {
   resetPassword,
 } from "../controller/auth";
 import { protect } from "../middleWares/authMiddleWare";
-import { authUpload } from "../middleWares/multerMiddleware/authMulter";
+import { uploadMulter } from "../middleWares/multer";
 
 const router = express.Router();
 
-router.post("/", authUpload.single("profilePhoto"), registerUser);
+router.post("/", uploadMulter.single("profilePhoto"), registerUser);
 router.patch(
   "/edit",
-  [authUpload.single("profilePhoto"), protect],
+  [uploadMulter.single("profilePhoto"), protect],
   editProfile
 );
-router.post("/login", authUpload.any(), loginUser);
+router.post("/login", uploadMulter.any(), loginUser);
 router.get("/me", protect, getMe);
-router.patch("/change-password", [protect, authUpload.any()], changePassword);
+router.patch("/change-password", [protect, uploadMulter.any()], changePassword);
 router
   .route("/reset-password")
-  .patch([protect, authUpload.any()], resetPassword);
-router.route("/forget-password").post(authUpload.any(), forgetPassword);
+  .patch([protect, uploadMulter.any()], resetPassword);
+router.route("/forget-password").post(uploadMulter.any(), forgetPassword);
 export default router;

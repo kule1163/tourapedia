@@ -1,8 +1,7 @@
 import { Button, Typography } from "@mui/material";
 import React from "react";
-import { EntitieProps } from "../../../../features/posts/types";
+import { EntitieProps } from "../../../features/posts/types";
 import "./styles.scss";
-import DefaultImage from "../../../../assets/defaultImage.jpg";
 import { useNavigate } from "react-router-dom";
 
 interface SingleFilteredPostProps {
@@ -16,7 +15,7 @@ const SingleFilteredPost = ({ filteredPost }: SingleFilteredPostProps) => {
     <div className="single-filtered-post-container">
       <div className="single-filtered-post-box">
         <div className="img-box">
-          {/* <img src={filteredPost.postImage.url} /> */}
+          <img src={filteredPost.postImage.url} />
         </div>
         <div className="content-continer">
           <Typography className="header-text">{filteredPost.title}</Typography>

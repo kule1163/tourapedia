@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
-import FilteredPosts from "../../../components/pages/filteredPosts/FilteredPosts";
+import FilteredPosts from "../FilteredPosts";
 import { getPostsByTag } from "../../../features/posts/asyncThunks";
 
 const GetByPostTag = () => {

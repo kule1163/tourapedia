@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import "./styles.scss";
 import MenuItems from "../menuItems/MenuItems";
+import { useAppSelector } from "../../../app/hooks";
 
 interface TopMenuProps {
   menuHeight: number | undefined;
@@ -9,12 +10,13 @@ interface TopMenuProps {
 
 const TopMenu = ({ menuHeight, setMenuHeight }: TopMenuProps) => {
   const ref = useRef<HTMLDivElement>(null);
+  const displayMenu = useAppSelector((state) => state.tourapp.displayMenu);
 
   useEffect(() => {
     if (ref.current) {
       setMenuHeight(ref.current?.clientHeight);
     }
-  }, [menuHeight]);
+  }, [displayMenu]);
 
   return (
     <div ref={ref}>

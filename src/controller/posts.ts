@@ -1,7 +1,5 @@
 import mongoose from "mongoose";
 import PostModel, { PostModelSchema } from "../models/postModel";
-import fs from "fs";
-import path from "path";
 import asyncHandler from "express-async-handler";
 import cloudinary from "../utils/cloudinary";
 

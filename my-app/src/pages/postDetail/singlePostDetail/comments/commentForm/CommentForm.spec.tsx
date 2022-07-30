@@ -1,7 +1,7 @@
 import { screen, render, fireEvent, waitFor } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import { store } from "../../../../../../app/store";
+import { store } from "../../../../../app/store";
 import CommentForm from "./CommentForm";
 
 const submit = jest.fn();

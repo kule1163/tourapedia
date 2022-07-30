@@ -4,14 +4,13 @@ import { TextField, Button } from "@mui/material";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schema } from "./FormValidation";
 import { useParams } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../../../../../app/hooks";
-import { createComment } from "../../../../../../features/comment/asyncThunks";
+import { useAppDispatch, useAppSelector } from "../../../../../app/hooks";
+import { createComment } from "../../../../../features/comment/asyncThunks";
 import {
   hideReply,
   setCurrentReply,
-} from "../../../../../../features/comment/commentSlice";
+} from "../../../../../features/comment/commentSlice";
 import "./styles.scss";
-import DefaultImage from "../../../../../../assets/defaultImage.jpg";
 
 export interface Inputs {
   content: string;
@@ -27,8 +26,6 @@ const CommentForm = ({ commentId, submit }: CommentFormProps) => {
 
   const dispatch = useAppDispatch();
   const user = useAppSelector((state) => state.auth.user);
-
-  console.log(user);
 
   const methods = useForm<Inputs>({
     resolver: yupResolver(schema),

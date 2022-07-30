@@ -1,8 +1,8 @@
 import { Typography } from "@mui/material";
 import React, { memo, useEffect, useState } from "react";
-import { useAppDispatch } from "../../../../../../app/hooks";
-import { setChildComments } from "../../../../../../features/comment/commentSlice";
-import { CommentProps } from "../../../../../../features/comment/types";
+import { useAppDispatch } from "../../../../../app/hooks";
+import { setChildComments } from "../../../../../features/comment/commentSlice";
+import { CommentProps } from "../../../../../features/comment/types";
 import SingleComment from "../singleComment/SingleComment";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { IoMdArrowDropup } from "react-icons/io";

@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import "./styles.scss";
-import SinglePostDetail from "../../components/pages/postDetail/singlePostDetail/SinglePostDetail";
-import RelatedPosts from "../../components/pages/postDetail/relatedPosts/RelatedPosts";
+import SinglePostDetail from "./singlePostDetail/SinglePostDetail";
+import RelatedPosts from "./relatedPosts/RelatedPosts";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { getSinglePost } from "../../features/posts/asyncThunks";
 import { useParams } from "react-router-dom";
-import Comments from "../../components/pages/postDetail/singlePostDetail/comments/Comments";
+import Comments from "./singlePostDetail/comments/Comments";
 import NotFoundPost from "../../components/notFoundPost/NotFoundPost";
 import Spinner from "../../components/spinner/Spinner";
 

@@ -1,12 +1,12 @@
 import React, { memo, useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../../../../../app/hooks";
-import { getComments } from "../../../../../features/comment/asyncThunks";
+import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
+import { getComments } from "../../../../features/comment/asyncThunks";
 import { useParams } from "react-router-dom";
 import SingleComment from "./singleComment/SingleComment";
 import ReplyComment from "./replyComment/ReplyComment";
 import CommentForm from "./commentForm/CommentForm";
 import "./styles.scss";
-import Spinner from "../../../../spinner/Spinner";
+import Spinner from "../../../../components/spinner/Spinner";
 
 export interface Inputs {
   content: string;
